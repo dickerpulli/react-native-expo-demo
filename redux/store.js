@@ -4,12 +4,12 @@ import { createLogger } from 'redux-logger';
 import rootReducer from './rootReducer';
 import { persistStore, persistReducer } from 'redux-persist';
 import { createNetworkMiddleware, offlineActionTypes } from 'react-native-offline';
-import storage from 'redux-persist/lib/storage'; // defaults to AsyncStorage
+import { AsyncStorage } from 'react-native';
 import config from '../config';
 
 const persistConfig = {
   key: 'root',
-  storage,
+  storage: AsyncStorage,
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
